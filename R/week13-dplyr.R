@@ -1,6 +1,7 @@
 ## Script Settings and Resources
 setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 library(dplyr)
+library(keyring)
 library(RMariaDB)
 
 ## Data Import and Cleaning

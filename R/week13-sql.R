@@ -44,5 +44,3 @@ dbGetQuery(conn, "WITH temp_ranked AS (
            SELECT employee_id, city, test_score
            FROM temp_ranked
            WHERE manager_rank IN (1,2,3);")
-
-#pulled checking to see if worked
