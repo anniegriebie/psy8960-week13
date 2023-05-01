@@ -40,9 +40,9 @@ week13_tbl %>%
   summarise(average_years = mean(yrs_employed), sd_years = sd(yrs_employed))
 
 #Display the location and ID numbers of the top 3 managers from each location, in alphabetical order by location and then descending order of test score. If there are ties, include everyone reaching rank 3.
-topmanagers_bylocation<- week13_tbl %>% 
+week13_tbl %>%
   group_by(city) %>% 
   arrange(city, desc(test_score)) %>% 
-  select(employee_id, test_score, city) %>% 
-  slice_max(order_by = tibble(city, test_score), n = 3, with_ties = T)
-topmanagers_bylocation
+  mutate(rank = dense_rank(desc(test_score))) %>%
+  filter(rank <= 3)%>%
+  select(employee_id, test_score, city)
